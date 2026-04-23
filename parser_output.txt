@@ -1,0 +1,26 @@
+STEP	STACK	INPUT	ACTION
+1	['$']	['int', 'main', '(', ')', 'begin', 'int', 'n', ';', 'do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	program -> int main ( ) begin stmt_list end
+2	['$', 'end', 'stmt_list', 'begin', ')', '(', 'main']	['int', 'main', '(', ')', 'begin', 'int', 'n', ';', 'do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	Match int
+3	['$', 'end', 'stmt_list', 'begin', ')', '(']	['main', '(', ')', 'begin', 'int', 'n', ';', 'do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	Match main
+4	['$', 'end', 'stmt_list', 'begin', ')']	['(', ')', 'begin', 'int', 'n', ';', 'do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	Match (
+5	['$', 'end', 'stmt_list', 'begin']	[')', 'begin', 'int', 'n', ';', 'do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	Match )
+6	['$', 'end', 'stmt_list']	['begin', 'int', 'n', ';', 'do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	Match begin
+7	['$', 'end']	['int', 'n', ';', 'do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	stmt_list -> stmt stmt_list
+8	['$', 'end', 'stmt_list']	['int', 'n', ';', 'do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	stmt -> declaration
+9	['$', 'end', 'stmt_list']	['int', 'n', ';', 'do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	declaration -> int n ;
+10	['$', 'end', 'stmt_list', ';', 'n']	['int', 'n', ';', 'do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	Match int
+11	['$', 'end', 'stmt_list', ';']	['n', ';', 'do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	Match n
+12	['$', 'end', 'stmt_list']	[';', 'do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	Match ;
+13	['$', 'end']	['do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	stmt_list -> stmt stmt_list
+14	['$', 'end', 'stmt_list']	['do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	stmt -> do_while
+15	['$', 'end', 'stmt_list']	['do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	do_while -> do stmt_list while ( exp )
+16	['$', 'end', 'stmt_list', ')', 'exp', '(', 'while', 'stmt_list']	['do', 'expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	Match do
+17	['$', 'end', 'stmt_list', ')', 'exp', '(', 'while']	['expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	stmt_list -> stmt stmt_list
+18	['$', 'end', 'stmt_list', ')', 'exp', '(', 'while', 'stmt_list']	['expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	stmt -> assignment
+19	['$', 'end', 'stmt_list', ')', 'exp', '(', 'while', 'stmt_list']	['expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	assignment -> id = expr ;
+20	['$', 'end', 'stmt_list', ')', 'exp', '(', 'while', 'stmt_list', ';', 'expr', '=']	['expr', '=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	Match expr
+21	['$', 'end', 'stmt_list', ')', 'exp', '(', 'while', 'stmt_list', ';', 'expr']	['=', 'expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	Match =
+22	['$', 'end', 'stmt_list', ')', 'exp', '(', 'while', 'stmt_list', ';']	['expr', '+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	Match expr
+23	['$', 'end', 'stmt_list', ')', 'exp', '(', 'while', 'stmt_list']	['+', 'expr', ';', 'n', '=', 'exp', ';', 'while', '(', 'exp', ')', 'return', '(', 'n', ')', 'end', '$']	Error
+
+Parsing Completed!

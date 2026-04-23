@@ -30,6 +30,15 @@ for mo in re.finditer(tok_regex, source_code):
     else:
         tokens.append((kind, value))
 
+# Print tokens
 print("\nTOKENS:")
-for token in tokens:
-    print(token)
+for t in tokens:
+    print(t)
+
+# 🔥 Save to file
+with open("token_output.txt", "w") as f:
+    f.write("TOKEN TABLE:\n")
+    for t in tokens:
+        f.write(str(t) + "\n")
+
+print("\nToken output saved to token_output.txt")

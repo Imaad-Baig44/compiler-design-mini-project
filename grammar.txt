@@ -1,0 +1,5 @@
+GRAMMAR:
+program -> int main ( ) begin stmt_list end
+stmt_list -> stmt stmt_list | epsilon
+stmt -> declaration | assignment | do_while | return
+expr -> expr + expr | id
